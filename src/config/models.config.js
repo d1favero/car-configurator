@@ -1,24 +1,76 @@
 export const MODEL_CONFIG = {
-  "STLFlix Car": {
+  stlaiCar: {
     enabled: true,
-    label: "STLFlix Car",
+    label: "STLAI Car",
     path: "/models/StlAI_Car.glb",
+    thumbnail: "/thumbnails/StlAiCar.png",
     parts: [
       {
-        nodeId: "StlAI_Car", // mesh name inside the .glb (use gltfjsx or https://gltf.pmnd.rs to inspect)
+        nodeId: "StlAI_Car",
         label: "Cor",
         position: [0, 0, 0],
         rotation: [0, 0, 0],
         scale: 1,
+        material: {metalness: 0.35, roughness: 0.35},
+        defaultTexture: "stlai-a",
+        alphaMap: "/textures/StlAI_Car/StlAiCar_Alpha.png",
+        textures: [
+          {
+            name: "Color A",
+            value: "stlai-a",
+            texture: "/textures/StlAI_Car/StlAiCar_A.png",
+            thumbnail: "/thumbnails/StlAiCar_A.png"
+          },
+          {
+            name: "Color B",
+            value: "stlai-b",
+            texture: "/textures/StlAI_Car/StlAiCar_B.png",
+            thumbnail: "/thumbnails/StlAiCar_B.png"
+          }
+        ]
       },
     ],
   },
 
-  // TODO: Add a second 3D model following the same pattern above.
-  // Each model part should also include:
-  // - a default texture identifier
-  // - an alpha/opacity map path
-  // - a list of texture variants, each with a display name, a unique value key,
-  //   the texture file path, and a thumbnail image path
-  // The config structure should make it easy to add new models in the future.
+
+  stlflixCar:{
+    enabled: true,
+    label: "STLFlix Car",
+    path: "/models/StlFlix_Car.glb",
+    thumbnail: "/thumbnails/StlFlixCar.png",
+    parts: [
+      {
+        nodeId: "StlFlix_Car",
+        label: "Cor",
+        position: [0, 0, 0],
+        rotation: [0, 0, 0],
+        scale: 1,
+        material: {metalness: 0.3, roughness: 0.35},
+        defaultTexture: "stlflix-a",
+        alphaMap: "/textures/StlFlix_Car/StlFlix_Car_Alpha.png",
+        textures: [
+          {
+            name: "Color A",
+            value: "stlflix-a",
+            texture: "/textures/StlFlix_Car/StlFlix_Car_A.png",
+            thumbnail: "/thumbnails/StlFlixCar_A.png"
+          },
+          {
+            name: "Color B",
+            value: "stlflix-b",
+            texture: "/textures/StlFlix_Car/StlFlix_Car_B.png",
+            thumbnail: "/thumbnails/StlFlixCar_B.png"
+          }
+        ]
+      },
+    ],
+  }
 }
+
+export const MODEL_IDS = Object.keys(MODEL_CONFIG).filter(id => MODEL_CONFIG[id].enabled)
+
+export const getDefaultTextures = (modelId) => Object.fromEntries(MODEL_CONFIG[modelId].parts.map((p) => [p.nodeId, p.defaultTexture]  )) 
+
+export const getTexture = (part,value) => part.textures.find((t) => t.value === value) ?? part.textures[0]
+
+
