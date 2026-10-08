@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
+        colors: { accent: { DEFAULT: "#fbbf24", hover: "#fcd34d" } },
       },
     },
   },
