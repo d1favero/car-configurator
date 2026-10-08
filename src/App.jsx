@@ -1,17 +1,28 @@
+// src/App.jsx
 import React, { Suspense } from "react"
 import { Canvas } from "@react-three/fiber"
 import Navbar from "./layout/Navbar"
 import Experience from "./webgl/Experience"
+import ModelPanel from "./components/ModelPanel"
+import TexturePanel from "./components/TexturePanel"
+import DownloadButton from "./components/DownloadButton"
+import Loader from "./components/Loader"
+import { SCENE_BG } from "./config/scene.config"
+import DevPanel from "./components/DevPanel"
 
 function App() {
   return (
-    <div className="h-screen flex flex-col overflow-hidden">
+    <div className="flex h-[100dvh] flex-col overflow-hidden">
       <Navbar />
+      <DevPanel />
 
-      <div className="flex flex-1 min-h-0">
-        {/* TODO: Add left panel (Model Selector) */}
+      <div className="flex min-h-0 flex-1 flex-col md:flex-row">
+        <ModelPanel />
 
-        <div className="relative flex-1 bg-[#444444]">
+        <div
+          className="relative min-h-0 min-w-0 flex-1"
+          style={{ backgroundColor: SCENE_BG }}
+        >
           <Canvas
             dpr={[1, 2]}
             camera={{ position: [0, 2, 6], fov: 50 }}
@@ -22,10 +33,11 @@ function App() {
             </Suspense>
           </Canvas>
 
-          {/* TODO: Add Download button */}
+          <DownloadButton />
+          <Loader />
         </div>
 
-        {/* TODO: Add right panel (Texture Configurator) */}
+        <TexturePanel />
       </div>
     </div>
   )
