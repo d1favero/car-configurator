@@ -1,4 +1,4 @@
-export const SCENE_BG = "#383838";
+export const SCENE_BG = "#0c0a1d";
 
 export const CAMERA = {
   targetAzimuth: Math.PI / 4,
@@ -23,7 +23,7 @@ export const LIGHTING = {
 };
 
 export const FLOOR = {
-  color: "#484747",
+  color: "#1a1530",
   mirror: 0,
   mixStrength: 0.4,
   mixBlur: 0,

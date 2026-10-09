@@ -1,4 +1,3 @@
-// src/components/TexturePanel.jsx
 import React from "react"
 import Panel from "./ui/Panel"
 import ThumbnailButton from "./ui/ThumbnailButton"
@@ -10,11 +9,18 @@ const TexturePanel = () => {
   const selectTexture = useConfigurator((s) => s.selectTexture)
 
   return (
-<Panel title="Personalizar" className="md:w-72 lg:w-96 xl:w-[36rem]">
-  {model.parts.map((part) => (
-    <section key={part.nodeId} className="mb-4 last:mb-0">
-      <h3 className="mb-2 text-sm text-neutral-300">{part.label}</h3>
-      <div className="flex gap-3 overflow-x-auto md:grid md:grid-cols-2 md:overflow-visible">
+    <Panel
+      title="Personalizar"
+      subtitle="Escolha a pintura do seu carro."
+      className="order-3 land:w-28 land:overflow-y-auto land:px-2
+        desk:absolute desk:right-6 desk:top-6 desk:max-h-[calc(100%-3rem)] desk:w-80 desk-lg:w-96"
+    >
+      {model.parts.map((part) => (
+        <section key={part.nodeId} className="mb-3 last:mb-0 desk:mb-4">
+          <h3 className="mb-2 hidden text-sm font-medium text-white/80 desk:block">
+            {part.label}
+          </h3>
+          <div className="flex gap-3 overflow-x-auto land:flex-col land:items-center land:overflow-x-visible desk:grid desk:grid-cols-2 desk:overflow-visible">
             {part.textures.map((tex) => (
               <ThumbnailButton
                 key={tex.value}

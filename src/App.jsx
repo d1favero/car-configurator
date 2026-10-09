@@ -1,4 +1,3 @@
-// src/App.jsx
 import React, { Suspense } from "react"
 import { Canvas } from "@react-three/fiber"
 import Navbar from "./layout/Navbar"
@@ -7,20 +6,19 @@ import ModelPanel from "./components/ModelPanel"
 import TexturePanel from "./components/TexturePanel"
 import DownloadButton from "./components/DownloadButton"
 import Loader from "./components/Loader"
-import { SCENE_BG } from "./config/scene.config"
 import DevPanel from "./components/DevPanel"
+import { SCENE_BG } from "./config/scene.config"
 
 function App() {
   return (
-    <div className="flex h-[100dvh] flex-col overflow-hidden">
+    <div className="flex h-[100dvh] flex-col overflow-hidden bg-surface">
       <Navbar />
       <DevPanel />
 
-      <div className="flex min-h-0 flex-1 flex-col md:flex-row">
-        <ModelPanel />
-
+      <main className="relative flex min-h-0 flex-1 flex-col land:flex-row desk:block">
+        {/* portrait: middle row / landscape: middle column / desktop: full-bleed behind panels */}
         <div
-          className="relative min-h-0 min-w-0 flex-1"
+          className="relative order-2 min-h-0 min-w-0 flex-1 desk:absolute desk:inset-0"
           style={{ backgroundColor: SCENE_BG }}
         >
           <Canvas
@@ -37,8 +35,9 @@ function App() {
           <Loader />
         </div>
 
+        <ModelPanel />
         <TexturePanel />
-      </div>
+      </main>
     </div>
   )
 }

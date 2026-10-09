@@ -1,4 +1,3 @@
-// src/components/Loader.jsx
 import React, { useEffect, useRef, useState } from "react"
 import { useConfigurator } from "../store/useConfigurator"
 import { SCENE_BG } from "../config/scene.config"
@@ -34,12 +33,12 @@ const Loader = () => {
         {[0, 150, 300].map((delay) => (
           <span
             key={delay}
-            className="h-2 w-2 animate-bounce rounded-full bg-amber-400"
+            className="h-2 w-2 animate-bounce rounded-full bg-brand shadow-glow"
             style={{ animationDelay: `${delay}ms` }}
           />
         ))}
       </div>
-      <p className="text-xs uppercase tracking-[0.2em] text-neutral-400">
+      <p className="text-xs uppercase tracking-[0.2em] text-white/50">
         Carregando modelo...
       </p>
     </div>

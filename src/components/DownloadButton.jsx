@@ -1,4 +1,3 @@
-// src/components/DownloadButton.jsx
 import React, { useState } from "react"
 import Button from "./ui/Button"
 import { useConfigurator, useActiveModel } from "../store/useConfigurator"
@@ -53,7 +52,7 @@ const DownloadButton = () => {
       icon={<DownloadIcon />}
       onClick={handleClick}
       disabled={isLoading || status === "working"}
-      className="absolute bottom-6 left-1/2 -translate-x-1/2"
+      className="absolute bottom-3 left-1/2 -translate-x-1/2 desk:bottom-6"
     >
       {LABELS[status]}
     </Button>
